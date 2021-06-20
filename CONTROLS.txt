@@ -1,0 +1,2 @@
+Desni click za zidanje (right click= wall)
+Lijevi click za postavljanje pozicija točki (left click= new position)
