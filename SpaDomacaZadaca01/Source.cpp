@@ -41,16 +41,7 @@ void setUpGrid(pathNode* grid) {
 				grid[y * gridWidth + x].neighbours.push_back(&grid[(y + 0) * gridWidth + (x - 1)]);
 			if (x < gridWidth - 1)
 				grid[y * gridWidth + x].neighbours.push_back(&grid[(y + 0) * gridWidth + (x + 1)]);
-			/*
-			if (y>0 && x>0)
-				grid[y* gridWidth + x].neighbours.push_back(&grid[(y - 1) * gridWidth + (x - 1)]);
-			if (y< gridHeight -1 && x>0)
-					grid[y* gridWidth + x].neighbours.push_back(&grid[(y + 1) * gridWidth + (x - 1)]);
-			if (y>0 && x< gridWidth -1)
-					grid[y* gridWidth + x].neighbours.push_back(&grid[(y - 1) * gridWidth + (x + 1)]);
-			if (y< gridHeight - 1 && x< gridWidth -1)
-					grid[y* gridWidth + x].neighbours.push_back(&grid[(y + 1) * gridWidth + (x + 1)]);
-				*/
+			
 
 
 		}
@@ -104,7 +95,6 @@ bool SolveAstar(pathNode* grid,pathNode* startN,pathNode* endN) {
 	(*startN).gCost = 0;
 	(*startN).hCost = distance((*startN).position,(*endN).position);
 	(*startN).fCost = distance((*startN).position,(*endN).position);
-	//priority_queue<pathNode*,vector<pathNode*>, sortByFCost> notTestedList;
 	list<pathNode*> notTestedList;
 
 	notTestedList.push_back(startN);
@@ -116,7 +106,6 @@ bool SolveAstar(pathNode* grid,pathNode* startN,pathNode* endN) {
 		while (!notTestedList.empty() && (*notTestedList.front()).isVisited)
 			notTestedList.pop_front();
 
-		// ...or abort because there are no valid nodes left to test
 		if (notTestedList.empty())
 			break;
 
